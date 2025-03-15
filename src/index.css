@@ -1,0 +1,23 @@
+
+:root{
+--color-dark-peach:#C599B6;
+--color-light-peach:#E6B2BA;
+--color-peach:#FAD0C4;
+--color-faded-peach:#FFF7F3;
+--primary-font: "Nunito", sans-serif;
+--secondary-font:"Roboto", sans-serif;
+
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+}
