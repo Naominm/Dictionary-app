@@ -49,10 +49,24 @@ function Dictionary() {
         {wordMeaning.phonetics.map((phonetic, index) => (
               <p key={index}>Phonetic: {phonetic.text}</p>
             ))}
-
-       
+ {wordMeaning.meanings.map((meaning, index) => (
+        <div key={index}>
+          <h3>{meaning.partOfSpeech}</h3>
+          {meaning.definitions.map((definition, defIndex) => (
+            <p key={defIndex}>{definition.definition}</p>
+          ))}
+        </div>
+      ))}
+ {wordMeaning.meanings.map((meaning, index) => (
+          <div key={index}>
+            <h3>{meaning.partOfSpeech}</h3>
+            {meaning.definitions.map((definition, defIndex) => (
+              <p key={defIndex}>{definition.definition}</p>
+            ))}
+          </div>
+        ))}
       </>
-    );
+  );
   } else {
     content = <p>No data found.</p>;
   }
