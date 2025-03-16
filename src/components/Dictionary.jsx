@@ -46,6 +46,9 @@ function Dictionary() {
     content = (
       <>
         <h1 className='title-main'><span>Meaning of </span>{wordMeaning.word}</h1>
+        {wordMeaning.phonetics.map((phonetic, index) => (
+              <p key={index}>Phonetic: {phonetic.text}</p>
+            ))}
 
        
       </>
