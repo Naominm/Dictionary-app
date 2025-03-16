@@ -9,6 +9,11 @@ function Dictionary() {
 
   async function GetMeaning(e) {
     e.preventDefault();
+    
+    if (!word) {
+      setError("Please enter a word to search.");
+      return;
+  }
 
     setLoading(true);
     setError("");
