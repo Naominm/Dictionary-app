@@ -1,64 +1,82 @@
-
-import {useState,useEffect}  from 'react'
-
+import { useState } from 'react';
 import "./Dictionary.css";
 
-function Dictionary(){
-// const[wordMeaning, setWordMeaning]=useState(null);
-// const[error,setError]=useState('');
-// const [loading, setLoading] = useState(true);
+function Dictionary() {
+  const [word, setWord] = useState('');
+  const [wordMeaning, setWordMeaning] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-// useEffect(()=>{
+  async function GetMeaning(e) {
+    e.preventDefault();  
 
-//     async function GetMeaning(){
-//         try {
-//         const response=await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/hello`)
-//         if(!response.ok){
-//            throw new Error("failed to fetch");
-//         }
-//         const data=await response.json();
-//         setWordMeaning(data[0]);
-// } catch (error) {
-//     setError("Error Fetching the meaning please try again later")
-//    }
-//   finally{
-//     setLoading(false);
-//   }
-// }
-// GetMeaning()
+ 
 
-// }, []);
+    setLoading(true);
+    setError('');
+    setWordMeaning(null);
 
-// if(loading)return <p>loading...</p>
+    try {
+      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch');
+      }
 
-// if(error)return <p className='error'>{error}</p>
+      const data = await response.json();
 
-// if(!wordMeaning) return <p>No data found</p>
+      if (data.length > 0) {
+        setWordMeaning(data[0]);
+      } else {
+        setError('No data found. Try a different word.');
+      }
+    } catch (error) {
+      setError('Error fetching the meaning. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
-return(
-  <div className="parent">
-    <div className="main-content">
-      <form className='form-elements'>
-        
+  let content;
+
+  if (loading) {
+    content = <p>Loading...</p>;
+  } else if (error) {
+    content = <p className='error'>{error}</p>;
+  } else if (wordMeaning) {
+    content = (
+      <>
+        <h1 className='title-main'><span>Meaning of </span>{wordMeaning.word}</h1>
+
+       
+      </>
+    );
+  } else {
+    content = <p>No data found.</p>;
+  }
+
+  return (
+    <div className="parent">
+      <div className="main-content">
+        <form className='form-elements' onSubmit={(e) => GetMeaning(e)}>
           <h2 className='title'>Welcome to Dictionary</h2>
           <div className="col-elements">
-        <input type="text" className='search' placeholder='Enter the word here to get the meaning' />
-        <button className='search submit'>submit</button>
-      
-        </div>
-      </form>
+            <input
+              type="text"
+              className='search'
+              placeholder='Enter the word here to get the meaning'
+              value={word}
+              onChange={(e) => setWord(e.target.value)}
+            />
+            <button className='search submit'>Submit</button>
+          </div>
+        </form>
+      </div>
 
-   {/* <h1>{wordMeaning.word}</h1> */}
-    
-</div>
-<div className="result-content">
-  <p>lets get the meaning</p>
-  <div className="word-title"></div>
-  <div className="word-audio"></div>
-  <div className="word-synonym"></div>
-</div>
-</div>
-    )
+      <div className="result-content">
+      {content}
+      </div>
+    </div>
+  );
 }
 
 export default Dictionary;
