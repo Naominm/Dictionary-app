@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--primary-font);
+  color: #F5F5DC;
 }
 .title {
   text-align: center;
@@ -58,12 +59,12 @@
   background-color: var(--color-dark-peach);
   min-height: 100vh;
   width: 100%;
-  color: var(--color-white);
   font-size: 2rem;
   font-family: var(--primary-font);
   font-weight: 600;
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }

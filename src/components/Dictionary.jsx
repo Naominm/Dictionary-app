@@ -64,7 +64,7 @@ function Dictionary() {
       </>
     );
   } else {
-    content = <p>No data found.</p>;
+    content = <p>please enter a word to check meaning</p>;
   }
 
   return (
