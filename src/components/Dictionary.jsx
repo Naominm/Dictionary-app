@@ -9,7 +9,7 @@ function Dictionary() {
 
   async function GetMeaning(e) {
     e.preventDefault();
-    
+
     if (!word) {
       setError("Please enter a word to search.");
       return;
@@ -61,8 +61,10 @@ function Dictionary() {
         {wordMeaning.meanings.map((meaning, index) => (
           <div key={index}>
             <h3>{meaning.partOfSpeech}</h3>
-            {meaning.definitions.map((definition, defIndex) => (
-              <p key={defIndex}>{definition.definition}</p>
+
+            {meaning.definitions.map((definition, definitionIndex) => (
+
+              <p key={definitionIndex}>{definition.definition}</p>
             ))}
           </div>
         ))}
@@ -85,12 +87,14 @@ function Dictionary() {
               value={word}
               onChange={(e) => setWord(e.target.value)}
             />
-            <button className="search submit">Submit</button>
+            <button className="search submit" disabled={loading}>Search</button>
           </div>
         </form>
       </div>
 
-      <div className="result-content">{content}</div>
+      <div className="result-content">
+        <div className="content-parent">  {content}</div>
+      </div>
     </div>
   );
 }
