@@ -1,72 +1,69 @@
-
-.parent{
-    background-color: var(--color-peach);
-    min-height: 100vh;
+.parent {
+  background-color: var(--color-peach);
+  min-height: 100vh;
 }
 
-.main-content{
-min-height: 25vh;
-color: var(--color-white);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-font-family: var(--primary-font);
+.main-content {
+  min-height: 25vh;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--primary-font);
 }
-.title{
-    text-align: center;
-    font-size: 4rem;
-    font-weight: 700;
-
+.title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
 }
-.form-elements{
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-top: 3rem ;
-    margin-bottom: 3rem;
+.form-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .form-elements input {
-    width: 40rem;
-    font-size: 1.5rem;
-    outline: none;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+  width: 40rem;
+  font-size: 1.5rem;
+  outline: none;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
-.search{
-    padding: 2rem;
-    border: none;
-    font-weight: 600;
-    word-spacing: 1.8;
-    font-family: inherit;
+.search {
+  padding: 2rem;
+  border: none;
+  font-weight: 600;
+  word-spacing: 1.8;
+  font-family: inherit;
 }
-.search,.submit{
-    outline: none;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-
+.search,
+.submit {
+  outline: none;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
-.submit:hover{
+.submit:hover {
   background-color: black;
   color: var(--color-white);
- 
 }
-.col-elements{
-    display: flex;
-    flex-direction: row;
+.col-elements {
+  display: flex;
+  flex-direction: row;
 }
 
-.result-content{
-    background-color: var(--color-dark-peach);
-    min-height: 100vh;
-    width: 100%;
-    color: var(--color-white);
-    font-size: 2rem;
-    font-family: var(--primary-font);
-    font-weight: 600;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap:2rem;
+.result-content {
+  background-color: var(--color-dark-peach);
+  min-height: 100vh;
+  width: 100%;
+  color: var(--color-white);
+  font-size: 2rem;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

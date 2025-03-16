@@ -1,24 +1,22 @@
-
-:root{
---color-dark-peach:#C599B6;
---color-light-peach:#E6B2BA;
---color-peach:#FAD0C4;
---color-faded-peach:#FFF7F3;
---color-white:#ffff;
---primary-font: "Nunito", sans-serif;
---secondary-font:"Roboto", sans-serif;
-
+:root {
+  --color-dark-peach: #c599b6;
+  --color-light-peach: #e6b2ba;
+  --color-peach: #fad0c4;
+  --color-faded-peach: #fff7f3;
+  --color-white: #ffff;
+  --primary-font: "Nunito", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
 }
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
-body{
+body {
   font-size: 1.6rem;
 }

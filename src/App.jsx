@@ -1,12 +1,11 @@
-
 import Dictionary from "./components/Dictionary";
 
-function App(){
-  return(
+function App() {
+  return (
     <>
-<Dictionary/>
+      <Dictionary />
     </>
-  )
+  );
 }
 
 export default App;

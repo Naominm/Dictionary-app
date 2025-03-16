@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import { useState } from "react";
 import "./Dictionary.css";
 
 function Dictionary() {
-  const [word, setWord] = useState('');
+  const [word, setWord] = useState("");
   const [wordMeaning, setWordMeaning] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function GetMeaning(e) {
-    e.preventDefault();  
-
- 
+    e.preventDefault();
 
     setLoading(true);
-    setError('');
+    setError("");
     setWordMeaning(null);
 
     try {
-      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
+      );
       if (!response.ok) {
-        throw new Error('Failed to fetch');
+        throw new Error("Failed to fetch");
       }
 
       const data = await response.json();
@@ -27,10 +27,10 @@ function Dictionary() {
       if (data.length > 0) {
         setWordMeaning(data[0]);
       } else {
-        setError('No data found. Try a different word.');
+        setError("No data found. Try a different word.");
       }
     } catch (error) {
-      setError('Error fetching the meaning. Please try again later.');
+      setError("Error fetching the meaning. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -41,23 +41,19 @@ function Dictionary() {
   if (loading) {
     content = <p>Loading...</p>;
   } else if (error) {
-    content = <p className='error'>{error}</p>;
+    content = <p className="error">{error}</p>;
   } else if (wordMeaning) {
     content = (
       <>
-        <h1 className='title-main'><span>Meaning of </span>{wordMeaning.word}</h1>
+        <h1 className="title-main">
+          <span>Meaning of </span>
+          {wordMeaning.word}
+        </h1>
         {wordMeaning.phonetics.map((phonetic, index) => (
-              <p key={index}>Phonetic: {phonetic.text}</p>
-            ))}
- {wordMeaning.meanings.map((meaning, index) => (
-        <div key={index}>
-          <h3>{meaning.partOfSpeech}</h3>
-          {meaning.definitions.map((definition, defIndex) => (
-            <p key={defIndex}>{definition.definition}</p>
-          ))}
-        </div>
-      ))}
- {wordMeaning.meanings.map((meaning, index) => (
+          <p key={index}>Phonetic: {phonetic.text}</p>
+        ))}
+
+        {wordMeaning.meanings.map((meaning, index) => (
           <div key={index}>
             <h3>{meaning.partOfSpeech}</h3>
             {meaning.definitions.map((definition, defIndex) => (
@@ -66,7 +62,7 @@ function Dictionary() {
           </div>
         ))}
       </>
-  );
+    );
   } else {
     content = <p>No data found.</p>;
   }
@@ -74,24 +70,22 @@ function Dictionary() {
   return (
     <div className="parent">
       <div className="main-content">
-        <form className='form-elements' onSubmit={(e) => GetMeaning(e)}>
-          <h2 className='title'>Welcome to Dictionary</h2>
+        <form className="form-elements" onSubmit={(e) => GetMeaning(e)}>
+          <h2 className="title">Welcome to Dictionary</h2>
           <div className="col-elements">
             <input
               type="text"
-              className='search'
-              placeholder='Enter the word here to get the meaning'
+              className="search"
+              placeholder="Enter the word here to get the meaning"
               value={word}
               onChange={(e) => setWord(e.target.value)}
             />
-            <button className='search submit'>Submit</button>
+            <button className="search submit">Submit</button>
           </div>
         </form>
       </div>
 
-      <div className="result-content">
-      {content}
-      </div>
+      <div className="result-content">{content}</div>
     </div>
   );
 }
